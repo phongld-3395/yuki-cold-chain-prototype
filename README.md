@@ -5,9 +5,9 @@ Stack: **Next.js 14 (App Router + API route) · Supabase (Postgres + Auth) · Ve
 
 | Mục | Link |
 |---|---|
-| App (Vercel) | `https://<điền-link-vercel>.vercel.app` |
-| Project Supabase | `https://supabase.com/dashboard/project/<điền-project-id>` |
-| Danh sách màn hình bản chốt & phần mock | `<điền link Google Sheet>` |
+| App (Vercel) | `https://yuki-cold-chain-prototype.vercel.app` |
+| Project Supabase | `https://supabase.com/dashboard/project/dymozbaynldidxbylduo` |
+| Danh sách màn hình bản chốt & phần mock | `https://docs.google.com/spreadsheets/d/1GwkegxSMYvumPhq3uvYhggTXUt2fLrm9PaEaqt0Mnac/edit` |
 
 > **Không vào được app / báo lỗi kết nối cơ sở dữ liệu?** Project Supabase gói Free tự tạm dừng khi lâu không dùng.
 > Vào Supabase Dashboard → mở project → bấm **Resume project**, chờ 1–2 phút rồi tải lại trang.
