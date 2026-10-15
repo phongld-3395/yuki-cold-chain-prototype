@@ -1,0 +1,1123 @@
+{
+ "project_title": "Yuki Cold Chain – Backlog & Sprint (LAB-5)",
+ "sprints": [
+  "Sprint 1 (07–18/12/2026)",
+  "Sprint 2 (21/12/2026–08/01/2027)",
+  "Sprint 3 (11–22/01/2027)",
+  "Sprint 4 (25/01–05/02/2027)",
+  "Sprint 5 (08–19/02/2027)"
+ ],
+ "owners": [
+  "PL – Phong",
+  "BrSE – An",
+  "TL – Huy",
+  "BE1 – Nam",
+  "BE2 – Lan",
+  "FE1 – Mai",
+  "FE2 – Tú",
+  "QA – Hà",
+  "DevOps – Quân"
+ ],
+ "constraints": [
+  "Giờ lái 2024",
+  "日付逆転",
+  "賞味/消費期限",
+  "Delivery window 1/3·1/2",
+  "Ngưỡng 3 dải nhiệt",
+  "POD 車上/軒先",
+  "Truy xuất gạo/bò"
+ ],
+ "epics": [
+  {
+   "key": "E01",
+   "title": "[E01] Nền tảng, bảo mật & CI",
+   "refs": "Kiến trúc mục 1, ADR-05, L-12, L-13",
+   "sp": 18,
+   "hours": 76
+  },
+  {
+   "key": "E02",
+   "title": "[E02] Master & hợp đồng khách–SKU",
+   "refs": "S-04, L-05, L-06",
+   "sp": 13,
+   "hours": 56
+  },
+  {
+   "key": "E03",
+   "title": "[E03] Nhập hàng & cách ly",
+   "refs": "S-02, L-03, L-04, L-11",
+   "sp": 19,
+   "hours": 76
+  },
+  {
+   "key": "E04",
+   "title": "[E04] Tồn kho & sổ di chuyển",
+   "refs": "L-02, màn hình tồn kho",
+   "sp": 11,
+   "hours": 44
+  },
+  {
+   "key": "E05",
+   "title": "[E05] Chất lượng nhiệt độ & HACCP",
+   "refs": "S-03, L-07, L-08",
+   "sp": 16,
+   "hours": 64
+  },
+  {
+   "key": "E06",
+   "title": "[E06] Phân bổ & quy tắc hạn dùng (日付逆転)",
+   "refs": "S-05, ADR-01/02/03",
+   "sp": 21,
+   "hours": 78
+  },
+  {
+   "key": "E07",
+   "title": "[E07] Xuất hàng & POD",
+   "refs": "S-06, S-08, L-01, L-14",
+   "sp": 23,
+   "hours": 93
+  },
+  {
+   "key": "E08",
+   "title": "[E08] Lập tuyến & giới hạn giờ lái 2024 (物流2024年問題)",
+   "refs": "S-07, ADR-04, L-09, L-10, FR-SCH-01…05",
+   "sp": 44,
+   "hours": 190
+  },
+  {
+   "key": "E09",
+   "title": "[E09] Bảng điều khiển",
+   "refs": "S-01",
+   "sp": 2,
+   "hours": 8
+  },
+  {
+   "key": "E10",
+   "title": "[E10] Kiểm thử, UAT & phát hành",
+   "refs": "NFR-PERF, ACC-*, quality gate",
+   "sp": 11,
+   "hours": 41
+  }
+ ],
+ "tasks": [
+  {
+   "key": "T-101",
+   "epic": "E01",
+   "title": "[T-101] CI trên GitHub Actions: lint + npm test + build cho mọi PR",
+   "sp": 3,
+   "hours": 12,
+   "owner": "DevOps – Quân",
+   "sprint": "Sprint 1 (07–18/12/2026)",
+   "status": "Done",
+   "actual": 10,
+   "constraint": "Không",
+   "refs": "Kiến trúc 1.1",
+   "subtasks": [
+    "Workflow chạy lint, test, build",
+    "Chặn merge khi CI đỏ",
+    "Badge trạng thái trong README"
+   ]
+  },
+  {
+   "key": "T-102",
+   "epic": "E01",
+   "title": "[T-102] Tách môi trường dev / staging / prod (Supabase + Vercel) và biến môi trường",
+   "sp": 3,
+   "hours": 12,
+   "owner": "DevOps – Quân",
+   "sprint": "Sprint 1 (07–18/12/2026)",
+   "status": "Done",
+   "actual": 14,
+   "constraint": "Không",
+   "refs": "Kiến trúc 1.1",
+   "subtasks": [
+    "Tạo project Supabase staging",
+    "Preview deploy theo nhánh",
+    "Tài liệu biến môi trường"
+   ]
+  },
+  {
+   "key": "T-103",
+   "epic": "E01",
+   "title": "[T-103] Test tự động 401/403 cho toàn bộ 23 API route",
+   "sp": 3,
+   "hours": 12,
+   "owner": "QA – Hà",
+   "sprint": "Sprint 1 (07–18/12/2026)",
+   "status": "Done",
+   "actual": 13,
+   "constraint": "Không",
+   "refs": "ADR-05, L-13",
+   "subtasks": [
+    "Test khi chưa đăng nhập → 401",
+    "Test sai vai trò → 403",
+    "Đưa vào CI"
+   ]
+  },
+  {
+   "key": "T-104",
+   "epic": "E01",
+   "title": "[T-104] Phiên đăng nhập: hết hạn phiên, chặn tài khoản is_active = false",
+   "sp": 2,
+   "hours": 8,
+   "owner": "BE1 – Nam",
+   "sprint": "Sprint 1 (07–18/12/2026)",
+   "status": "Done",
+   "actual": 7,
+   "constraint": "Không",
+   "refs": "S-01, 2.9",
+   "subtasks": [
+    "Kiểm tra is_active trong requireApi",
+    "Thông báo khi phiên hết hạn"
+   ]
+  },
+  {
+   "key": "T-105",
+   "epic": "E01",
+   "title": "[T-105] Thêm correlation_id cho request và audit_logs",
+   "sp": 2,
+   "hours": 8,
+   "owner": "BE2 – Lan",
+   "sprint": "Sprint 2 (21/12/2026–08/01/2027)",
+   "status": "Todo",
+   "actual": 0,
+   "constraint": "Không",
+   "refs": "L-12, NFR-OPS-01",
+   "subtasks": [
+    "Middleware sinh correlation_id",
+    "Ghi vào audit_logs và log server"
+   ]
+  },
+  {
+   "key": "T-106",
+   "epic": "E01",
+   "title": "[T-106] SSO OIDC với IdP doanh nghiệp + MFA cho vai trò đặc quyền",
+   "sp": 5,
+   "hours": 24,
+   "owner": "BE1 – Nam",
+   "sprint": "Sprint 4 (25/01–05/02/2027)",
+   "status": "Todo",
+   "actual": 0,
+   "constraint": "Không",
+   "refs": "IF-IDP-01, Q-08",
+   "subtasks": [
+    "Cấu hình OIDC provider",
+    "Ánh xạ nhóm IdP → vai trò",
+    "Bật MFA cho admin/qa"
+   ]
+  },
+  {
+   "key": "T-201",
+   "epic": "E02",
+   "title": "[T-201] Cột trạng thái riêng cho hợp đồng khách–SKU thay cho window_rule = null",
+   "sp": 2,
+   "hours": 8,
+   "owner": "BE2 – Lan",
+   "sprint": "Sprint 1 (07–18/12/2026)",
+   "status": "Done",
+   "actual": 9,
+   "constraint": "Delivery window 1/3·1/2",
+   "refs": "L-06, R-06",
+   "subtasks": [
+    "Migration thêm status ACTIVE/BUSINESS_REVIEW",
+    "Cập nhật evaluate dùng status",
+    "Test BUSINESS-REVIEW chặn phân bổ"
+   ]
+  },
+  {
+   "key": "T-202",
+   "epic": "E02",
+   "title": "[T-202] Màn hình S-04: đổi quy tắc delivery window, đánh dấu dòng BUSINESS-REVIEW, audit",
+   "sp": 3,
+   "hours": 12,
+   "owner": "FE1 – Mai",
+   "sprint": "Sprint 2 (21/12/2026–08/01/2027)",
+   "status": "Todo",
+   "actual": 0,
+   "constraint": "Delivery window 1/3·1/2",
+   "refs": "S-04",
+   "subtasks": [
+    "Select 3 quy tắc + chưa chốt",
+    "Thông báo thành công/lỗi",
+    "Ghi audit before/after"
+   ]
+  },
+  {
+   "key": "T-203",
+   "epic": "E02",
+   "title": "[T-203] Luồng đề xuất – duyệt thay đổi master (maker ≠ checker, hiệu lực theo ngày)",
+   "sp": 5,
+   "hours": 24,
+   "owner": "BE2 – Lan",
+   "sprint": "Sprint 3 (11–22/01/2027)",
+   "status": "Todo",
+   "actual": 0,
+   "constraint": "Không",
+   "refs": "L-05, S3-01",
+   "subtasks": [
+    "Bảng master_change_requests",
+    "API đề xuất / duyệt / từ chối",
+    "Áp dụng theo effective_from"
+   ]
+  },
+  {
+   "key": "T-204",
+   "epic": "E02",
+   "title": "[T-204] Màn hình hàng duyệt thay đổi master",
+   "sp": 3,
+   "hours": 12,
+   "owner": "FE2 – Tú",
+   "sprint": "Sprint 3 (11–22/01/2027)",
+   "status": "Todo",
+   "actual": 0,
+   "constraint": "Không",
+   "refs": "L-05",
+   "subtasks": [
+    "Danh sách đề xuất",
+    "Xem khác biệt trước/sau",
+    "Nút duyệt / từ chối có lý do"
+   ]
+  },
+  {
+   "key": "T-301",
+   "epic": "E03",
+   "title": "[T-301] Tách inbound_appointments / inbound_lines; chỉ tạo lô khi ACCEPT",
+   "sp": 5,
+   "hours": 22,
+   "owner": "BE1 – Nam",
+   "sprint": "Sprint 2 (21/12/2026–08/01/2027)",
+   "status": "Todo",
+   "actual": 0,
+   "constraint": "Không",
+   "refs": "L-03, FR-REC-01/03",
+   "subtasks": [
+    "Migration 2 bảng mới",
+    "API kiểm hàng ghi dòng trước, tạo lô sau",
+    "Lưu dòng HOLD/REJECT kèm lý do"
+   ]
+  },
+  {
+   "key": "T-302",
+   "epic": "E03",
+   "title": "[T-302] Validate field P0 và thông báo lỗi theo spec S-02",
+   "sp": 2,
+   "hours": 8,
+   "owner": "FE1 – Mai",
+   "sprint": "Sprint 1 (07–18/12/2026)",
+   "status": "Done",
+   "actual": 6,
+   "constraint": "Không",
+   "refs": "S-02 #1–#7",
+   "subtasks": [
+    "Đánh dấu trường lỗi",
+    "Giữ nhà cung cấp sau khi lưu"
+   ]
+  },
+  {
+   "key": "T-303",
+   "epic": "E03",
+   "title": "[T-303] Kiểm nhiệt độ theo version ngưỡng dải nhiệt, tạo deviation có snapshot ngưỡng",
+   "sp": 3,
+   "hours": 12,
+   "owner": "BE2 – Lan",
+   "sprint": "Sprint 1 (07–18/12/2026)",
+   "status": "Done",
+   "actual": 12,
+   "constraint": "Ngưỡng 3 dải nhiệt",
+   "refs": "S-02 #4, BR-TEMP-01/02",
+   "subtasks": [
+    "Chọn version theo ngày",
+    "Lô QUARANTINE + deviation",
+    "Test 6.2°C với 冷蔵 0–5°C"
+   ]
+  },
+  {
+   "key": "T-304",
+   "epic": "E03",
+   "title": "[T-304] Lane truy xuất: mã bò 10 chữ số / xuất xứ gạo bắt buộc",
+   "sp": 2,
+   "hours": 6,
+   "owner": "BE1 – Nam",
+   "sprint": "Sprint 2 (21/12/2026–08/01/2027)",
+   "status": "Todo",
+   "actual": 0,
+   "constraint": "Truy xuất gạo/bò",
+   "refs": "S-02 #6, BR-TRACE-01/02",
+   "subtasks": [
+    "Validate API + DB",
+    "Test SKU bò thiếu mã"
+   ]
+  },
+  {
+   "key": "T-305",
+   "epic": "E03",
+   "title": "[T-305] Ảnh kiểm hàng lên Supabase Storage + sha256 + bảng attachments",
+   "sp": 5,
+   "hours": 20,
+   "owner": "BE2 – Lan",
+   "sprint": "Sprint 3 (11–22/01/2027)",
+   "status": "Todo",
+   "actual": 0,
+   "constraint": "Không",
+   "refs": "L-04, D1",
+   "subtasks": [
+    "Bucket + policy",
+    "Bảng attachments (path, sha256, version)",
+    "Thay checkbox mock bằng upload"
+   ]
+  },
+  {
+   "key": "T-306",
+   "epic": "E03",
+   "title": "[T-306] Mở rộng lý do cách ly (HOLD, truy xuất) ngoài nhiệt độ",
+   "sp": 2,
+   "hours": 8,
+   "owner": "BE1 – Nam",
+   "sprint": "Sprint 3 (11–22/01/2027)",
+   "status": "Todo",
+   "actual": 0,
+   "constraint": "Không",
+   "refs": "L-11, FR-INV-05",
+   "subtasks": [
+    "Enum lý do",
+    "Hiển thị lý do trên chi tiết lô"
+   ]
+  },
+  {
+   "key": "T-401",
+   "epic": "E04",
+   "title": "[T-401] Schema sổ di chuyển kho inventory_movements + migration tồn hiện tại",
+   "sp": 3,
+   "hours": 12,
+   "owner": "BE1 – Nam",
+   "sprint": "Sprint 3 (11–22/01/2027)",
+   "status": "Todo",
+   "actual": 0,
+   "constraint": "Không",
+   "refs": "L-02, FR-INV-03",
+   "subtasks": [
+    "Bảng movements",
+    "Migration số dư đầu kỳ",
+    "Ràng buộc không âm"
+   ]
+  },
+  {
+   "key": "T-402",
+   "epic": "E04",
+   "title": "[T-402] Ghi movement tại nhập, phân bổ, xuất, hủy; tồn tính từ sổ",
+   "sp": 5,
+   "hours": 20,
+   "owner": "BE1 – Nam",
+   "sprint": "Sprint 4 (25/01–05/02/2027)",
+   "status": "Todo",
+   "actual": 0,
+   "constraint": "Không",
+   "refs": "L-02",
+   "subtasks": [
+    "Cập nhật RPC allocate_line",
+    "Cập nhật API nhập/xuất/scrap",
+    "Đối soát tồn = tổng movement"
+   ]
+  },
+  {
+   "key": "T-403",
+   "epic": "E04",
+   "title": "[T-403] Màn hình tồn kho & chi tiết lô: lịch sử di chuyển",
+   "sp": 3,
+   "hours": 12,
+   "owner": "FE2 – Tú",
+   "sprint": "Sprint 4 (25/01–05/02/2027)",
+   "status": "Todo",
+   "actual": 0,
+   "constraint": "Không",
+   "refs": "2.9",
+   "subtasks": [
+    "Bảng lịch sử movements",
+    "Lọc theo dải nhiệt / trạng thái"
+   ]
+  },
+  {
+   "key": "T-501",
+   "epic": "E05",
+   "title": "[T-501] Màn hình S-03: review RELEASE/SCRAP, lý do bắt buộc, SLA 15 phút",
+   "sp": 3,
+   "hours": 12,
+   "owner": "FE2 – Tú",
+   "sprint": "Sprint 1 (07–18/12/2026)",
+   "status": "In Progress",
+   "actual": 8,
+   "constraint": "Ngưỡng 3 dải nhiệt",
+   "refs": "S-03",
+   "subtasks": [
+    "Form quyết định + lý do",
+    "Hiển thị thời gian chờ",
+    "Xử lý 409 đã xử lý"
+   ]
+  },
+  {
+   "key": "T-502",
+   "epic": "E05",
+   "title": "[T-502] Import CSV logger idempotent theo hash, báo lỗi theo số dòng",
+   "sp": 5,
+   "hours": 20,
+   "owner": "BE2 – Lan",
+   "sprint": "Sprint 2 (21/12/2026–08/01/2027)",
+   "status": "Todo",
+   "actual": 0,
+   "constraint": "Ngưỡng 3 dải nhiệt",
+   "refs": "IF-LOG-01, FR-TEMP-01, Q-15",
+   "subtasks": [
+    "Upload + hash file",
+    "Parse theo định dạng hãng",
+    "Báo lỗi theo dòng"
+   ]
+  },
+  {
+   "key": "T-503",
+   "epic": "E05",
+   "title": "[T-503] Job đánh giá reading theo ngưỡng version → tạo deviation",
+   "sp": 3,
+   "hours": 12,
+   "owner": "BE2 – Lan",
+   "sprint": "Sprint 2 (21/12/2026–08/01/2027)",
+   "status": "Todo",
+   "actual": 0,
+   "constraint": "Ngưỡng 3 dải nhiệt",
+   "refs": "L-07, FR-TEMP-02",
+   "subtasks": [
+    "Đánh giá theo vị trí → dải",
+    "Gom event first/last/peak",
+    "Tạo deviation + lô ảnh hưởng"
+   ]
+  },
+  {
+   "key": "T-504",
+   "epic": "E05",
+   "title": "[T-504] Mức độ sai lệch & duyệt nhiều bước (deviation_actions)",
+   "sp": 5,
+   "hours": 20,
+   "owner": "BE1 – Nam",
+   "sprint": "Sprint 4 (25/01–05/02/2027)",
+   "status": "Todo",
+   "actual": 0,
+   "constraint": "Ngưỡng 3 dải nhiệt",
+   "refs": "L-08, FR-TEMP-04, Q-04",
+   "subtasks": [
+    "Bảng deviation_actions",
+    "Ma trận vai trò theo severity",
+    "Cập nhật màn hình S-03"
+   ]
+  },
+  {
+   "key": "T-601",
+   "epic": "E06",
+   "title": "[T-601] Luật 消費期限 chặn cứng / 賞味期限 không chặn – kèm test",
+   "sp": 2,
+   "hours": 6,
+   "owner": "BE1 – Nam",
+   "sprint": "Sprint 1 (07–18/12/2026)",
+   "status": "Done",
+   "actual": 5,
+   "constraint": "賞味/消費期限",
+   "refs": "S-05 #4, BR-EXP-01/02",
+   "subtasks": [
+    "Hàm kiểm tra theo expiry_type",
+    "Test hạn = ngày giao"
+   ]
+  },
+  {
+   "key": "T-602",
+   "epic": "E06",
+   "title": "[T-602] Tính delivery window ONE_THIRD / ONE_HALF / LABEL_DATE_ONLY, làm tròn ngày",
+   "sp": 3,
+   "hours": 10,
+   "owner": "BE1 – Nam",
+   "sprint": "Sprint 1 (07–18/12/2026)",
+   "status": "Done",
+   "actual": 12,
+   "constraint": "Delivery window 1/3·1/2",
+   "refs": "S-05 #4, BR-DELWIN-01, Q-03",
+   "subtasks": [
+    "Công thức tỷ lệ còn lại",
+    "Test biên 2/3 và 1/2",
+    "Lưu bằng chứng tính"
+   ]
+  },
+  {
+   "key": "T-603",
+   "epic": "E06",
+   "title": "[T-603] 日付逆転: lần giao DELIVERED gần nhất theo khách–SKU, không mượn lịch sử",
+   "sp": 3,
+   "hours": 12,
+   "owner": "BE2 – Lan",
+   "sprint": "Sprint 1 (07–18/12/2026)",
+   "status": "Done",
+   "actual": 11,
+   "constraint": "日付逆転",
+   "refs": "S-05 #3, BR-DATE-01, ADR-03",
+   "subtasks": [
+    "Truy vấn theo cặp khách–SKU",
+    "Bỏ qua REJECTED",
+    "Test CUS-003 / CUS-004"
+   ]
+  },
+  {
+   "key": "T-604",
+   "epic": "E06",
+   "title": "[T-604] Cảnh báo khi có chuyến IN_TRANSIT cùng khách–SKU với hạn mới hơn",
+   "sp": 2,
+   "hours": 8,
+   "owner": "BE2 – Lan",
+   "sprint": "Sprint 1 (07–18/12/2026)",
+   "status": "In Progress",
+   "actual": 5,
+   "constraint": "日付逆転",
+   "refs": "ADR-03 (hệ quả)",
+   "subtasks": [
+    "Truy vấn chuyến đang giao",
+    "Hiển thị cảnh báo (không chặn)"
+   ]
+  },
+  {
+   "key": "T-605",
+   "epic": "E06",
+   "title": "[T-605] Kiểm tra lại 日付逆転 bên trong RPC allocate_line",
+   "sp": 3,
+   "hours": 12,
+   "owner": "TL – Huy",
+   "sprint": "Sprint 1 (07–18/12/2026)",
+   "status": "In Progress",
+   "actual": 9,
+   "constraint": "日付逆転",
+   "refs": "ADR-02 (hệ quả)",
+   "subtasks": [
+    "Chuyển điều kiện sang SQL",
+    "Test 2 phiên đồng thời",
+    "Đo thời gian khóa"
+   ]
+  },
+  {
+   "key": "T-606",
+   "epic": "E06",
+   "title": "[T-606] FEFO rồi FIFO, không phân bổ một phần",
+   "sp": 1,
+   "hours": 4,
+   "owner": "BE1 – Nam",
+   "sprint": "Sprint 1 (07–18/12/2026)",
+   "status": "Done",
+   "actual": 3,
+   "constraint": "Không",
+   "refs": "S-05 #5",
+   "subtasks": [
+    "Sắp xếp + lấy đủ SL",
+    "Test thiếu SL"
+   ]
+  },
+  {
+   "key": "T-607",
+   "epic": "E06",
+   "title": "[T-607] Màn hình S-05: bảng 5 cột kiểm tra, lý do từng ô, trạng thái thiếu SL",
+   "sp": 5,
+   "hours": 18,
+   "owner": "FE1 – Mai",
+   "sprint": "Sprint 1 (07–18/12/2026)",
+   "status": "In Progress",
+   "actual": 12,
+   "constraint": "日付逆転",
+   "refs": "S-05, W-05",
+   "subtasks": [
+    "Bảng đánh giá",
+    "Nút phân bổ + lỗi 409/422",
+    "Trạng thái BUSINESS-REVIEW"
+   ]
+  },
+  {
+   "key": "T-608",
+   "epic": "E06",
+   "title": "[T-608] Test E2E 5 kịch bản SO-1001 … SO-1005",
+   "sp": 2,
+   "hours": 8,
+   "owner": "QA – Hà",
+   "sprint": "Sprint 1 (07–18/12/2026)",
+   "status": "Todo",
+   "actual": 0,
+   "constraint": "日付逆転",
+   "refs": "S-05 tiêu chí nghiệm thu",
+   "subtasks": [
+    "Viết kịch bản",
+    "Reset dữ liệu trước test",
+    "Đưa vào CI nightly"
+   ]
+  },
+  {
+   "key": "T-701",
+   "epic": "E07",
+   "title": "[T-701] Khóa ngoại deliveries.route_id → routes",
+   "sp": 1,
+   "hours": 3,
+   "owner": "BE2 – Lan",
+   "sprint": "Sprint 2 (21/12/2026–08/01/2027)",
+   "status": "Todo",
+   "actual": 0,
+   "constraint": "Không",
+   "refs": "L-01",
+   "subtasks": [
+    "Migration + kiểm dữ liệu cũ"
+   ]
+  },
+  {
+   "key": "T-702",
+   "epic": "E07",
+   "title": "[T-702] API xuất hàng kiểm dải nhiệt xe = dải nhiệt SKU phía server",
+   "sp": 2,
+   "hours": 6,
+   "owner": "BE1 – Nam",
+   "sprint": "Sprint 2 (21/12/2026–08/01/2027)",
+   "status": "Todo",
+   "actual": 0,
+   "constraint": "Ngưỡng 3 dải nhiệt",
+   "refs": "L-14, BR-TEMP-02",
+   "subtasks": [
+    "Validate trong /api/shipments",
+    "Test gán sai xe → 422"
+   ]
+  },
+  {
+   "key": "T-703",
+   "epic": "E07",
+   "title": "[T-703] Màn hình S-06 xuất hàng",
+   "sp": 2,
+   "hours": 8,
+   "owner": "FE2 – Tú",
+   "sprint": "Sprint 2 (21/12/2026–08/01/2027)",
+   "status": "Todo",
+   "actual": 0,
+   "constraint": "Không",
+   "refs": "S-06",
+   "subtasks": [
+    "Danh sách dòng đã phân bổ",
+    "Chọn tuyến cùng dải"
+   ]
+  },
+  {
+   "key": "T-704",
+   "epic": "E07",
+   "title": "[T-704] POD: bằng chứng theo 車上渡し / 軒先渡し; REJECTED không tính lịch sử",
+   "sp": 3,
+   "hours": 12,
+   "owner": "BE2 – Lan",
+   "sprint": "Sprint 2 (21/12/2026–08/01/2027)",
+   "status": "Todo",
+   "actual": 0,
+   "constraint": "POD 車上/軒先",
+   "refs": "S-08, BR-POD-01",
+   "subtasks": [
+    "Quy tắc bằng chứng theo điều kiện",
+    "Cập nhật deliveries",
+    "Test thiếu ảnh 軒先渡し"
+   ]
+  },
+  {
+   "key": "T-705",
+   "epic": "E07",
+   "title": "[T-705] Lưu ảnh / chữ ký POD có hash và version",
+   "sp": 5,
+   "hours": 20,
+   "owner": "BE1 – Nam",
+   "sprint": "Sprint 3 (11–22/01/2027)",
+   "status": "Todo",
+   "actual": 0,
+   "constraint": "POD 車上/軒先",
+   "refs": "DR-POD-01, L-04",
+   "subtasks": [
+    "Upload từ thiết bị",
+    "sha256 + version",
+    "Hiển thị lại trên lịch sử giao"
+   ]
+  },
+  {
+   "key": "T-706",
+   "epic": "E07",
+   "title": "[T-706] Hàng đợi POD offline mã hóa tối đa 8 giờ",
+   "sp": 5,
+   "hours": 24,
+   "owner": "FE1 – Mai",
+   "sprint": "Sprint 4 (25/01–05/02/2027)",
+   "status": "Todo",
+   "actual": 0,
+   "constraint": "POD 車上/軒先",
+   "refs": "NFR-AVL-02",
+   "subtasks": [
+    "Lưu cục bộ mã hóa",
+    "Đồng bộ đúng 1 lần (idempotency)",
+    "Cảnh báo quá 8 giờ"
+   ]
+  },
+  {
+   "key": "T-707",
+   "epic": "E07",
+   "title": "[T-707] Test cắt mạng tại điểm giao cho POD offline",
+   "sp": 2,
+   "hours": 8,
+   "owner": "QA – Hà",
+   "sprint": "Sprint 4 (25/01–05/02/2027)",
+   "status": "Todo",
+   "actual": 0,
+   "constraint": "POD 車上/軒先",
+   "refs": "NFR-AVL-02",
+   "subtasks": [
+    "Kịch bản mất sóng 2h",
+    "Kiểm không trùng bản ghi"
+   ]
+  },
+  {
+   "key": "T-708",
+   "epic": "E07",
+   "title": "[T-708] Màn hình S-08 POD",
+   "sp": 3,
+   "hours": 12,
+   "owner": "FE2 – Tú",
+   "sprint": "Sprint 3 (11–22/01/2027)",
+   "status": "Todo",
+   "actual": 0,
+   "constraint": "POD 車上/軒先",
+   "refs": "S-08, W-08",
+   "subtasks": [
+    "Form theo điều kiện giao",
+    "Thông báo thiếu bằng chứng"
+   ]
+  },
+  {
+   "key": "T-801",
+   "epic": "E08",
+   "title": "[T-801] Workshop tái kiểm chứng giá trị luật giờ lái với pháp chế Yuki",
+   "sp": 2,
+   "hours": 6,
+   "owner": "BrSE – An",
+   "sprint": "Sprint 1 (07–18/12/2026)",
+   "status": "In Progress",
+   "actual": 4,
+   "constraint": "Giờ lái 2024",
+   "refs": "OPS-LAW-01, Q-05",
+   "subtasks": [
+    "Gửi bảng giá trị RFP cho Yuki",
+    "Ghi biên bản xác nhận",
+    "Tạo driver_rule_versions v2 nếu khác"
+   ]
+  },
+  {
+   "key": "T-802",
+   "epic": "E08",
+   "title": "[T-802] Mô hình rule version: driver_rule_versions + chọn theo ngày tuyến",
+   "sp": 2,
+   "hours": 8,
+   "owner": "BE2 – Lan",
+   "sprint": "Sprint 1 (07–18/12/2026)",
+   "status": "Done",
+   "actual": 8,
+   "constraint": "Giờ lái 2024",
+   "refs": "ADR-04",
+   "subtasks": [
+    "Hàm chọn version",
+    "Tuyến lưu rule_version khi publish"
+   ]
+  },
+  {
+   "key": "T-803",
+   "epic": "E08",
+   "title": "[T-803] Kiểm lái liên tục ≤ 4h (chỉ nghỉ ≥ 30' mới reset, dỡ hàng không tính nghỉ) + test biên",
+   "sp": 3,
+   "hours": 12,
+   "owner": "BE1 – Nam",
+   "sprint": "Sprint 1 (07–18/12/2026)",
+   "status": "Done",
+   "actual": 13,
+   "constraint": "Giờ lái 2024",
+   "refs": "S-07 #5, FR-SCH-02",
+   "subtasks": [
+    "Logic tích lũy",
+    "Khoảng giờ vi phạm",
+    "Test 240' / 241'"
+   ]
+  },
+  {
+   "key": "T-804",
+   "epic": "E08",
+   "title": "[T-804] Kiểm ràng buộc trong ngày 13h, ngoại lệ tối đa 15h",
+   "sp": 3,
+   "hours": 14,
+   "owner": "BE1 – Nam",
+   "sprint": "Sprint 2 (21/12/2026–08/01/2027)",
+   "status": "Todo",
+   "actual": 0,
+   "constraint": "Giờ lái 2024",
+   "refs": "FR-SCH-02",
+   "subtasks": [
+    "Tính ràng buộc gồm quay về kho",
+    "Đếm số lần ngoại lệ",
+    "Test biên 780' / 900'"
+   ]
+  },
+  {
+   "key": "T-805",
+   "epic": "E08",
+   "title": "[T-805] Kiểm nghỉ giữa ca ≥ 11h (tối thiểu 9h) – cần dữ liệu ca trước",
+   "sp": 3,
+   "hours": 14,
+   "owner": "BE2 – Lan",
+   "sprint": "Sprint 3 (11–22/01/2027)",
+   "status": "Todo",
+   "actual": 0,
+   "constraint": "Giờ lái 2024",
+   "refs": "FR-SCH-02, phụ thuộc T-808",
+   "subtasks": [
+    "Đọc ca trước từ chấm công",
+    "Cảnh báo / chặn",
+    "Test biên 660' / 540'"
+   ]
+  },
+  {
+   "key": "T-806",
+   "epic": "E08",
+   "title": "[T-806] Kiểm lái trung bình 9h/ngày (2 ngày) và 44h/tuần (2 tuần)",
+   "sp": 3,
+   "hours": 14,
+   "owner": "BE2 – Lan",
+   "sprint": "Sprint 3 (11–22/01/2027)",
+   "status": "Todo",
+   "actual": 0,
+   "constraint": "Giờ lái 2024",
+   "refs": "FR-SCH-02, phụ thuộc T-808",
+   "subtasks": [
+    "Cửa sổ 2 ngày / 2 tuần",
+    "Test dữ liệu nhiều ngày"
+   ]
+  },
+  {
+   "key": "T-807",
+   "epic": "E08",
+   "title": "[T-807] Kiểm giới hạn tháng 284h, năm 3,300h ràng buộc, 960h làm thêm/năm",
+   "sp": 3,
+   "hours": 14,
+   "owner": "BE1 – Nam",
+   "sprint": "Sprint 4 (25/01–05/02/2027)",
+   "status": "Todo",
+   "actual": 0,
+   "constraint": "Giờ lái 2024",
+   "refs": "FR-SCH-02, phụ thuộc T-808",
+   "subtasks": [
+    "Tích lũy theo tháng/năm",
+    "Cảnh báo sớm khi gần ngưỡng"
+   ]
+  },
+  {
+   "key": "T-808",
+   "epic": "E08",
+   "title": "[T-808] Master xe & tài xế + import dữ liệu chấm công (勤怠)",
+   "sp": 5,
+   "hours": 24,
+   "owner": "BE2 – Lan",
+   "sprint": "Sprint 2 (21/12/2026–08/01/2027)",
+   "status": "Todo",
+   "actual": 0,
+   "constraint": "Giờ lái 2024",
+   "refs": "L-09",
+   "subtasks": [
+    "Bảng vehicles, drivers",
+    "Import chấm công",
+    "Gắn tài xế vào tuyến"
+   ]
+  },
+  {
+   "key": "T-809",
+   "epic": "E08",
+   "title": "[T-809] Tích hợp map service: thời gian lái theo batch, cache, timeout; > 24h không publish",
+   "sp": 5,
+   "hours": 24,
+   "owner": "BE1 – Nam",
+   "sprint": "Sprint 3 (11–22/01/2027)",
+   "status": "Todo",
+   "actual": 0,
+   "constraint": "Giờ lái 2024",
+   "refs": "IF-MAP-01, L-10, Q-06",
+   "subtasks": [
+    "Client gọi API có license",
+    "Cache + timeout",
+    "Thay nhập tay drive_min"
+   ]
+  },
+  {
+   "key": "T-810",
+   "epic": "E08",
+   "title": "[T-810] Gợi ý chèn điểm nghỉ trước 4h lái liên tục",
+   "sp": 3,
+   "hours": 12,
+   "owner": "BE2 – Lan",
+   "sprint": "Sprint 4 (25/01–05/02/2027)",
+   "status": "Todo",
+   "actual": 0,
+   "constraint": "Giờ lái 2024",
+   "refs": "FR-SCH-03",
+   "subtasks": [
+    "Thuật toán vị trí nghỉ",
+    "Hiển thị trên timeline"
+   ]
+  },
+  {
+   "key": "T-811",
+   "epic": "E08",
+   "title": "[T-811] Publish có version, bắt buộc lý do khi sửa sau publish, gắn rule_version",
+   "sp": 2,
+   "hours": 8,
+   "owner": "BE1 – Nam",
+   "sprint": "Sprint 1 (07–18/12/2026)",
+   "status": "Done",
+   "actual": 7,
+   "constraint": "Giờ lái 2024",
+   "refs": "FR-SCH-04, S-07 #6",
+   "subtasks": [
+    "Tăng version",
+    "Lưu lý do",
+    "Test sửa sau publish"
+   ]
+  },
+  {
+   "key": "T-812",
+   "epic": "E08",
+   "title": "[T-812] Màn hình S-07: timeline, khoảng giờ vi phạm, khóa publish",
+   "sp": 5,
+   "hours": 20,
+   "owner": "FE2 – Tú",
+   "sprint": "Sprint 2 (21/12/2026–08/01/2027)",
+   "status": "Todo",
+   "actual": 0,
+   "constraint": "Giờ lái 2024",
+   "refs": "S-07, W-07",
+   "subtasks": [
+    "Bảng điểm dừng + thời gian",
+    "Hộp vi phạm + gợi ý",
+    "Khóa publish khi chưa lưu"
+   ]
+  },
+  {
+   "key": "T-813",
+   "epic": "E08",
+   "title": "[T-813] Bộ fixture kiểm thử cho từng giới hạn giờ lái (biên trên/dưới)",
+   "sp": 3,
+   "hours": 12,
+   "owner": "QA – Hà",
+   "sprint": "Sprint 2 (21/12/2026–08/01/2027)",
+   "status": "Todo",
+   "actual": 0,
+   "constraint": "Giờ lái 2024",
+   "refs": "FR-SCH-02",
+   "subtasks": [
+    "Fixture từng giới hạn",
+    "Chạy trong CI"
+   ]
+  },
+  {
+   "key": "T-814",
+   "epic": "E08",
+   "title": "[T-814] Ghi sự kiện bất khả kháng tách riêng, không ghi đè kết quả tuân thủ",
+   "sp": 2,
+   "hours": 8,
+   "owner": "BE2 – Lan",
+   "sprint": "Sprint 4 (25/01–05/02/2027)",
+   "status": "Todo",
+   "actual": 0,
+   "constraint": "Giờ lái 2024",
+   "refs": "FR-SCH-05",
+   "subtasks": [
+    "Bảng sự kiện",
+    "Hiển thị trên lịch sử tuyến"
+   ]
+  },
+  {
+   "key": "T-901",
+   "epic": "E09",
+   "title": "[T-901] Dashboard S-01: đếm theo vai trò, link lọc sẵn",
+   "sp": 2,
+   "hours": 8,
+   "owner": "FE1 – Mai",
+   "sprint": "Sprint 2 (21/12/2026–08/01/2027)",
+   "status": "Todo",
+   "actual": 0,
+   "constraint": "Không",
+   "refs": "S-01",
+   "subtasks": [
+    "5 ô đếm",
+    "Bảng cảnh báo gần nhất"
+   ]
+  },
+  {
+   "key": "T-1001",
+   "epic": "E10",
+   "title": "[T-1001] Test tải 80 CCU, 300,000 dòng xuất, 2.5 triệu reading",
+   "sp": 5,
+   "hours": 20,
+   "owner": "QA – Hà",
+   "sprint": "Sprint 5 (08–19/02/2027)",
+   "status": "Todo",
+   "actual": 0,
+   "constraint": "Không",
+   "refs": "NFR-PERF-01/02",
+   "subtasks": [
+    "Sinh dữ liệu lớn",
+    "Kịch bản k6",
+    "Báo cáo p95"
+   ]
+  },
+  {
+   "key": "T-1002",
+   "epic": "E10",
+   "title": "[T-1002] Script reset dữ liệu demo / UAT",
+   "sp": 1,
+   "hours": 3,
+   "owner": "DevOps – Quân",
+   "sprint": "Sprint 1 (07–18/12/2026)",
+   "status": "Done",
+   "actual": 2,
+   "constraint": "Không",
+   "refs": "LAB-2 README",
+   "subtasks": [
+    "Truncate + seed",
+    "Tài liệu chạy"
+   ]
+  },
+  {
+   "key": "T-1003",
+   "epic": "E10",
+   "title": "[T-1003] Kịch bản UAT theo fixture R-06",
+   "sp": 3,
+   "hours": 12,
+   "owner": "QA – Hà",
+   "sprint": "Sprint 5 (08–19/02/2027)",
+   "status": "Todo",
+   "actual": 0,
+   "constraint": "Không",
+   "refs": "S4-03, R-06",
+   "subtasks": [
+    "Viết kịch bản theo vai trò",
+    "Chuẩn bị dữ liệu mask"
+   ]
+  },
+  {
+   "key": "T-1004",
+   "epic": "E10",
+   "title": "[T-1004] Quality gate phát hành: AI review + người review, checklist go/no-go",
+   "sp": 2,
+   "hours": 6,
+   "owner": "PL – Phong",
+   "sprint": "Sprint 5 (08–19/02/2027)",
+   "status": "Todo",
+   "actual": 0,
+   "constraint": "Không",
+   "refs": "ACC-GO-01",
+   "subtasks": [
+    "Checklist",
+    "Mẫu báo cáo sẵn sàng phát hành"
+   ]
+  }
+ ]
+}
